@@ -31,54 +31,7 @@ spec:
                 name: webapp-color
                 port:
                   number: 8080
-    # - host: app-dev.minesweepers.games
-    #   http:
-    #     paths:
-    #       - backend:
-    #           serviceName: raz4app
-    #           servicePort: 1338
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: echo-ingress-router
-#   namespace: production
-#   annotations:
-#     kubernetes.io/ingress.class: nginx
-#     # certmanager.k8s.io/cluster-issuer: letsencrypt-prod
-#     nginx.ingress.kubernetes.io/affinity: 'cookie'
-#     nginx.ingress.kubernetes.io/session-cookie-name: 'route'
-#     nginx.ingress.kubernetes.io/session-cookie-expires: '172800'
-#     nginx.ingress.kubernetes.io/session-cookie-max-age: '172800'
-# spec:
-#   # tls:
-#   #   - hosts:
-#   #       - 'raz4api.minesweepers.games'
-#   #       - 'app.minesweepers.games'
-#   #     secretName: letsencrypt-prod
-#   rules:
-#     # - host: raz4api.minesweepers.games
-#     - http:
-#         paths:
-#           - pathType: Prefix
-#             path: '/production'
-#             backend:
-#               service:
-#                 name: frontend
-#                 port:
-#                   number: 80
-# - host: app.minesweepers.games
-#   http:
-#     paths:
-#       - backend:
-#           serviceName: raz4app
-#           servicePort: 1338
-# - host: beta.minesweepers.games
-#   http:
-#     paths:
-#       - backend:
-#           serviceName: raz4app
-#           servicePort: 1338
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
