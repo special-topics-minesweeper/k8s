@@ -21,6 +21,12 @@ spec:
       containers:
         - name: frontend
           image: davardanian/minesweeper-react:latest
+          env:
+            - name: REACT_APP_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: frontend-config
+                  key: REACT_APP_BASE_URL
           imagePullPolicy: Always
           # env:
           #   - name: PUBLIC_URL
