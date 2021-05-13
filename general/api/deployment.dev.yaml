@@ -22,11 +22,43 @@ spec:
         - name: backend
           image: davardanian/minesweeper-backend:latest
           imagePullPolicy: Always
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: JWT_SECRET
+                  name: backend-config
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  key: MONGO_URI
+                  name: backend-config
           # env:
           #   - name: PUBLIC_URL
           #     value: '/production/'
           ports:
             - containerPort: 1238
+          volumeMounts:
+            - name: backend-volume
+              mountPath: /var/test/testpvc
+      volumes:
+        - name: backend-volume
+          persistentVolumeClaim:
+            claimName: backend-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backend-pvc
+  namespace: production
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 2Gi
 ---
 apiVersion: v1
 kind: Service
