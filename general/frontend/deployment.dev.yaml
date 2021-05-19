@@ -24,9 +24,9 @@ spec:
           env:
             - name: REACT_APP_BASE_URL
               valueFrom:
-                configMapKeyRef:
-                  name: frontend-config
+                secretKeyRef:
                   key: REACT_APP_BASE_URL
+                  name: frontend-secret-config
           imagePullPolicy: Always
           # env:
           #   - name: PUBLIC_URL

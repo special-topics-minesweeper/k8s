@@ -6,4 +6,4 @@ metadata:
   labels:
     app: frontend
 data:
-  REACT_APP_BASE_URL: https://api.minesweepers.games/
+  REACT_APP_BASE_URL: 'https://api.minesweepers.games/'
